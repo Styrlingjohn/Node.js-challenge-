@@ -1,19 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const { type } = require('os');
+const generateMarkdown = require('./utils/generateMarkdown');
 
-// // TODO: Include packages needed for this application
-
-// // TODO: Create an array of questions for user input
-// const questions = [];
-
-// // TODO: Create a function to write README file
-// function writeToFile(fileName, data) {}
-
-// // TODO: Create a function to initialize app
-// function init() {}
-
-// // Function call to initialize app
-// init();
 const generateREADME= ({title, descript, toContents, installation, usage, instructions}) =>
 `# Title
     ${title}
@@ -71,6 +60,12 @@ inquirer
       message: 'Provide some instructions on how to use',
       
     },
+    {
+      type: 'list',
+      name: 'license',
+      message: 'Select your license type',
+      choices: ['GNU AGPLv3', 'GNU GPLv3', 'GNU LGPLv3', 'Mozilla Public License 2.0', 'Apache License 2.0', 'MIT License', 'Boost Software License 1.0', 'The Unlicense'],
+    }
   ])
   .then((data) => {
 
